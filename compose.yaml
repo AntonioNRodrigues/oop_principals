@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  h2-database:
+    image: oscarfonts/h2
+    container_name: h2-database
+    ports:
+      - "8082:8082"
+    environment:
+      - H2_OPTIONS=-tcp -tcpAllowOthers -web -webAllowOthers
+
+  spring-app:
+    image: openjdk:23-jdk
+    container_name: spring-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - h2-database
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ./gradlew bootRun
