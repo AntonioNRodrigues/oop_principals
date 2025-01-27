@@ -30,5 +30,6 @@ public class AuthorTest {
         assertEquals("Author Biography", author.getBiography());
         assertEquals(1, author.getBooks().size());
         assertEquals("Book 1", author.getBooks().get(0).getTitle());
+
     }
 }
