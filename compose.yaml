@@ -8,7 +8,7 @@ services:
       - H2_OPTIONS=-tcp -tcpAllowOthers -web -webAllowOthers
 
   spring-app:
-    image: openjdk:23-jdk
+    image: eclipse-temurin:25-jdk
     container_name: spring-oop-app
     ports:
       - "8080:8080"
@@ -17,4 +17,4 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    command: ./gradlew bootRun
+    command: mvn spring-boot:run
